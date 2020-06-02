@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Kaggle UFC Battle Fight Data: Swack!</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+    form {
+    margin: auto;
+    width: 35%;
+    }
+    .result {
+        margin: auto;
+        width: 35%;
+        border: 1px solid #ccc;
+    }
+</style>
+<body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: lightgrey;">
+    <div class="container-fluid">
+        <a class="navbar-light bg-secondary text-white m-2 pl-2 pr-2" href="/">Main Page</a>
+        <button class="navbar navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+            <ul class="nav navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Machine Learning</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="https://jorgitotorres.github.io/00_model_logisticsregression.html" target="_blank">Logistic Regression</a>
+                        <a class="dropdown-item" href="https://jorgitotorres.github.io/00_model_gridsearch.html" target="_blank">Grid Search</a>
+                        <a class="dropdown-item" href="https://jorgitotorres.github.io/01_training_model.html" target="_blank">Tensorflow Model</a>
+
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Visualizations</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="https://jorgitotorres.github.io/00_data_visualization_a.html" target="_blank">Visualization Group 1</a>
+                        <a class="dropdown-item" href="https://jorgitotorres.github.io/00_data_visualization_b.html" target="_blank">Visualization Group 2</a>
+                        <a class="dropdown-item" href="https://jorgitotorres.github.io/00_data_visualization_c.html" target="_blank">Visualization Group 3</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Selected Model</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="https://jorgitotorres.github.io/02_notraining_model.html" target="_blank">Trained Model</a>
+                        <a class="dropdown-item" href="https://jorgitotorres.github.io/03_debugger.html" target="_blank">Flask Debugger</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<form action="{{ url_for('main') }}" method="POST">
+    <fieldset>
+        <legend>Input values:</legend>
+        Red Weight:
+        <input name="R_Weight" type="number" required>
+        <br>
+        <br> Red Height:
+        <input name="R_Height" type="number" required>
+        <br>
+        <br>  Red Age:
+        <input name="R_Age" type="number" required>
+        <br> 
+        <hr>
+        <br> Blue Weight:
+        <input name="B_Weight" type="number" required>
+        <br>
+        <br> Blue Height:
+        <input name="B_Height" type="number" required>
+        <br>
+        <br>  Blue Age:
+        <input name="B_Age" type="number" required>
+        <br>
+        <br>
+        <input type="submit">
+    </fieldset>
+</form>
+<br>
+<div class="result" align="center">
+    {% if result %}
+        {% for variable, value in original_input.items() %}
+            <b>{{ variable }}</b> : {{ value }} <br>
+        {% endfor %}
+        <br>
+        <br> Player prediction of win goes to:
+           <p style="font-size:50px">{{ result }}</p>
+    {% endif %}
+</div>
+
+</div>
+
+</body>
+
+
+</html>
