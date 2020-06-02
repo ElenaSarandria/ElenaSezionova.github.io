@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>San Francisco Crime Incidents</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="resources/reset.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/styles.css">
+    <script src="https://cdn.anychart.com/js/8.0.1/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/js/8.0.1/anychart-pie.min.js"></script>
+</head>
+
+<body style="background-color:lightgrey">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: lightgrey;">
+    <div class="container-fluid">
+        <a class="navbar-brand bg-success text-white m-2 pl-2 pr-2" href="index.html">Main Page</a>
+        <button class="navbar-toggler bg-success" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+  
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+            <ul class="nav navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Maps</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="map-crimes.html">Top 5 Crime Map</a>
+                      <a class="dropdown-item" href="map-months.html">Monthly Crime</a>
+                      <a class="dropdown-item" href="map-heat.html">Heatmap Everything</a>
+
+                  </div>
+              </li>
+              <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">BarCharts</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="piechart.html" target="_blank">Crimes by Month Piechart</a>
+                            <a class="dropdown-item" href="piechart1.html" target="_blank">Day of the Week Piechart</a>
+                            <a class="dropdown-item" href="barchart.html" target="_blank">Crime Rate Barchart</a>
+                        </div>
+                </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="data.html">Data</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+  </nav>
+
+        <div id="container" style="width: 100%; height: 500px">
+   
+                <script>
+
+                    anychart.onDocumentReady(function() { 
+           
+                    // set the data
+                        var data = [
+                            {x: "Monday", value: 15007},
+                            {x: "Tuesday", value: 14612},
+                            {x: "Wednesday", value: 14366},
+                            {x: "Thursday", value: 14780},
+                            {x: "Friday", value: 14984},
+                            {x: "Saturday", value: 16316},
+                            {x: "Sunday", value: 16213},
+                        ];
+
+                        // create the chart
+                        var chart = anychart.pie();
+
+                        // set the chart title
+                        chart.title("Crime Rate Based on Day in San Francisco");
+
+                        // add the data
+                        chart.data(data);
+
+                        // set legend position
+                        chart.legend().position("right");
+                        
+                        // set items layout
+                        chart.legend().itemsLayout("vertical");
+
+                        // display the chart in the container
+                        chart.container('container');
+                        chart.draw();
+
+                        });
+
+                </script>
+        </div>
+        
+</body>
+<br>
+<footer class="footer">
+    <div class="container-fluid p-3 mb-2 bg-secondary text-white text-center">
+        © Copyright Coding Bootcamp 2020
+    </div>
+</footer>
+
+</html>

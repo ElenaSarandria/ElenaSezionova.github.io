@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>San Francisco Crime Incidents</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="resources/reset.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/styles.css">
+    <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-base.min.js?hcode=a0c21fc77e1449cc86299c5faa067dc4"></script>
+    <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-exports.min.js?hcode=a0c21fc77e1449cc86299c5faa067dc4"></script>
+    <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-ui.min.js?hcode=a0c21fc77e1449cc86299c5faa067dc4"></script>
+</head>
+
+<body style="background-color:lightgrey">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<style>
+    /* body { background-image: url('images/Fig1.png');  } */
+    #container { width: 100px;
+        height: 100px;
+        background-color: rgba(21, 127, 168, 0.342);
+        position: absolute;
+        top:120;
+        bottom: 20;
+        left: 0;
+        right: 0;
+        margin: auto; }
+    
+    </style> 
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: lightgrey;">
+    <div class="container-fluid">
+        <a class="navbar-brand bg-success text-white m-2 pl-2 pr-2" href="index.html">Main Page</a>
+        <button class="navbar-toggler bg-success" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+  
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+            <ul class="nav navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Maps</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="map-crimes.html">Top 5 Crime Map</a>
+                        <a class="dropdown-item" href="map-months.html">Monthly Crime</a>
+                        <a class="dropdown-item" href="map-heat.html">Heatmap Everything</a>
+                    </div>
+                </li>
+              <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">BarCharts</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="piechart.html" target="_blank">Crimes by Month Piechart</a>
+                            <a class="dropdown-item" href="piechart1.html" target="_blank">Day of the Week Piechart</a>
+                            <a class="dropdown-item" href="barchart.html" target="_blank">Crime Rate Barchart</a>
+                        </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="data.html">Data</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div id="anychart-embed-samples-bct-stacking-02" class="anychart-embed anychart-embed-samples-bct-stacking-02">
+        <div id="ac_style_samples-bct-stacking-02" style="display:none;"></div>
+            <script>(function(){
+            function ac_add_to_head(el){
+                var head = document.getElementsByTagName('head')[0];
+                head.insertBefore(el,head.firstChild);
+            }
+            function ac_add_link(url){
+                var el = document.createElement('link');
+                el.rel='stylesheet';el.type='text/css';el.media='all';el.href=url;
+                ac_add_to_head(el);
+            }
+            function ac_add_style(css){
+                var ac_style = document.createElement('style');
+                if (ac_style.styleSheet) ac_style.styleSheet.cssText = css;
+                else ac_style.appendChild(document.createTextNode(css));
+                ac_add_to_head(ac_style);
+            }
+            ac_add_link('https://cdn.anychart.com/releases/8.7.1/css/anychart-ui.min.css?hcode=a0c21fc77e1449cc86299c5faa067dc4');
+            ac_add_style(document.getElementById("ac_style_samples-bct-stacking-02").innerHTML);
+            ac_add_style(".anychart-embed-samples-bct-stacking-02{width:1050px;height:650px;}");
+            })();</script>
+            <div id="container" style="width: 100%; height: 500px">
+            
+                <script>
+                anychart.onDocumentReady(function () {
+
+                    // create a stage
+                    var stage = anychart.graphics.create("container");
+                
+                    var item1 = "Sunday";
+                    var item2 = "Monday";
+                    var item3 = "Tuesday";
+
+                    // create a data set
+                    var data = anychart.data.set([
+                    ["January", 1480, 1363, 1410, 1087, 1140, 1229, 1248],
+                    ["February", 1067, 1112, 1151, 1200, 1191, 1241, 1335],
+                    ["March", 1088, 1167, 1140, 1567, 1502, 1587, 1235],
+                    ["April", 1328, 1138, 1128, 1112, 1106, 1253, 1534],
+                    ["May", 1154, 1467, 1426, 1355, 1197, 1210, 1238],
+                    ["June", 1231, 1161, 1098, 1123, 1412, 1593, 1244],
+                    ["July", 1495, 1416, 1070, 1106, 1215, 1248, 1628],
+                    ["August", 1150, 1095, 1336, 1401, 1401, 1257, 1284],
+                    ["September", 1104, 1114, 1070, 1114, 1120, 1600, 1600],
+                    ["October", 1504, 1449, 1376, 1178, 1200, 1322, 1265],
+                    ["November", 1082, 1148, 1203, 1478, 1301, 1327, 1163],
+                    ["December", 1324, 982, 958, 1059, 1199, 1449, 1439]
+                    ]);
+                
+                    // map the data
+                    var seriesData_1 = data.mapAs({x: 0, value: 1});
+                    var seriesData_2 = data.mapAs({x: 0, value: 2});
+                    var seriesData_3 = data.mapAs({x: 0, value: 3});
+                    var seriesData_4 = data.mapAs({x: 0, value: 4});
+                    var seriesData_5 = data.mapAs({x: 0, value: 5});
+                    var seriesData_6 = data.mapAs({x: 0, value: 6});
+                    var seriesData_7 = data.mapAs({x: 0, value: 7});
+                
+                
+
+                    // Create legend
+                    //legend.items([])
+                
+                    // create a chart
+                    var chart = anychart.column();
+                
+                    /* enable the percent stacking mode
+                    on the default primary value scale*/
+                    chart.yScale().stackMode("percent");
+                
+                    // set the tick interval on the value scale
+                    chart.yScale().ticks().interval(10);
+
+
+                    
+                
+                    // create column series
+                    var series1 = chart.column(seriesData_1);
+                    var series2 = chart.column(seriesData_2);
+                    var series3 = chart.column(seriesData_3);
+                    var series4 = chart.column(seriesData_4);
+                    var series5 = chart.column(seriesData_5);
+                    var series6 = chart.column(seriesData_6);
+                    var series7 = chart.column(seriesData_7);
+                    series1.name("Sunday");
+                    series2.name("Monday");
+                    series3.name("Tuesday");
+                    series4.name("Wednesday");
+                    series5.name("Thursday");
+                    series6.name("Friday");
+                    series7.name("Saturday");
+
+
+                    // configure labels on the y-axis
+                    chart.yAxis().labels().format("{%value}%");
+                
+                    // configure tooltips
+                    chart.tooltip().format("{%yPercentOfCategory}{decimalsCount:2}%");
+                
+                    // set the chart title
+                    chart.title("Comparison of Crimes Committed by Day and Months");
+
+                    // create a standalone legend
+                    var legend = anychart.standalones.legend();
+
+                    // set the source of legend items
+                    legend.items([item1, item2, item3 /*"Wednesday", "Thursday", "Friday", "Saturday"*/]);
+
+                    // set the container for the legend
+                    legend.container(stage);
+
+                    // set legend position
+                    //chart.legend().position("bottom");
+
+                    // set items layout
+                    //chart.legend().itemsLayout("horizontal");
+
+                    // set the padding of the legend
+                    legend.padding(10);
+
+                    //chart.bounds(2, 50, "100%", "100%");
+                
+                    // set the container id
+                    chart.container(stage);
+                
+                    // initiate drawing the chart
+                    chart.draw();
+
+                    // set the container for the legend
+                // legend.container(stage);
+
+                // enable the legend
+                    chart.legend(true);
+
+                // draw
+                    chart.container(stage).draw();
+
+                    // draw the legend
+                    //legend.draw();
+
+                });
+                </script>
+            </div>
+</div>
+        
+</body>
+<br>
+<footer class="footer">
+    <div class="container-fluid p-3 mb-2 bg-secondary text-white text-center">
+        © Copyright Coding Bootcamp 2020
+    </div>
+</footer>
+
+</html>
