@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="resources/reset.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="resources/style.css">
+  <title>Crime Heatmap per SFPD Data</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
+  integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+  crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+  integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+  crossorigin=""></script>
+
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+
+  <script type="text/javascript" src="https://unpkg.com/leaflet.markercluster@1.0.3/dist/leaflet.markercluster.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.css">
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.Default.css">
+
+  <link rel="stylesheet" type="text/css" href="resources/styles.css">
+
+</head>
+  
+<style>
+  body { background-image: url('images/Fig1.png');  }
+  #map { width: 100px;
+	height: 100px;
+	background-color: rgba(21, 127, 168, 0.342);
+	position: absolute;
+	top:120;
+	bottom: 20;
+	left: 0;
+	right: 0;
+	margin: auto; }
+
+</style>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: lightgrey;">
+  <div class="container-fluid">
+      <a class="navbar-brand bg-success text-white m-2 pl-2 pr-2" href="index.html">Main Page</a>
+      <button class="navbar-toggler bg-success" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+          <ul class="nav navbar-nav">
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Maps</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="map-crimes.html">Top 5 Crime Map</a>
+                      <a class="dropdown-item" href="map-months.html">Monthly Crime</a>
+                      <a class="dropdown-item" href="map-heat.html">Heatmap Everything</a>
+
+                  </div>
+              </li>
+              <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">BarCharts</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="piechart.html" target="_blank">Crimes by Month Piechart</a>
+                            <a class="dropdown-item" href="piechart1.html" target="_blank">Day of the Week Piechart</a>
+                            <a class="dropdown-item" href="barchart.html" target="_blank">Crime Rate Barchart</a>
+                        </div>
+                </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="data.html">Data</a>
+              </li>
+          </ul>
+      </div>
+  </div>
+</nav>  
+
+<body>
+  
+  <div id="map" style="width: 1200px; height: 800px"></div>
+  <script type="text/javascript" src="resources/config.js"></script>
+  <script type="text/javascript" src="resources/danheat.js"></script>
+  <script type="text/javascript" src="resources/leaflet-heat.js"></script>
+
+</body>
+</html>
